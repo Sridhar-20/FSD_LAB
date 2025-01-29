@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Details</title>
+    <style>
+        table {
+            width: 50%;
+            margin-top: 20px;
+            border-collapse: collapse; /* Uncomment for better table design */
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather Details</h1>
+    <input type="text" id="cityInput" placeholder="Enter city name">
+    <button id="button">Get Weather</button>
+    <button id="forecastButton">Get Forecast</button>
+    
+    <h2>Current Weather</h2>
+    <table id="weather-table">
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>Min Temp (°C)</th>
+                <th>Max Temp (°C)</th>
+                <th>Humidity (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Current weather data will be populated here -->
+        </tbody>
+    </table>
+
+    <h2>Weather Forecast</h2>
+    <table id="forecast-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temperature (°C)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Forecast data will be populated here -->
+        </tbody>
+    </table>
+
+    <script src="demo2.js"></script>
+</body>
+</html>

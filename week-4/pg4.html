@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Temperature Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        #weather-chart {
+            width: 800px;  
+            height: 600px; 
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Weather Temperature Chart</h1>
+    <input type="text" id="city" placeholder="Enter city" />
+    <button onclick="fetchWeather()">Get Weather</button>
+    <div></div
+        >
+    <canvas id="weather-chart"></canvas>
+
+    <script>
+        function fetchWeather() {
+            const city = document.getElementById('city').value;
+            const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=ec9c3f61099329cdb566a83771aa3943&units=metric`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const dates = data.list.map(item => new Date(item.dt * 1000).toLocaleDateString());
+                    const temps = data.list.map(item => item.main.temp);
+
+                    const x = document.getElementById('weather-chart').getContext('2d');
+                    new Chart(x, {
+                        type: 'bar',
+                        data: {
+                            labels: dates,
+                            datasets: [{
+                                label: 'Temperature (°C)',
+                                data: temps,
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: false,  
+                            maintainAspectRatio: false,                            
+                        }
+                    });
+                });
+        }
+    </script>
+</body>
+
+</html>
